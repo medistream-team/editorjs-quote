@@ -3,7 +3,9 @@
  */
 import './index.css';
 
-import { IconAlignLeft, IconAlignCenter, IconQuote } from '@codexteam/icons';
+import { IconAlignLeft, IconAlignCenter } from '@codexteam/icons';
+
+const IconQuote = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_2703_124953)"><path fill-rule="evenodd" clip-rule="evenodd" d="M22 6.499C19.385 7.887 18.077 9.519 18.077 11.393C19.1538 11.5117 20.1437 12.0398 20.842 12.868C21.5574 13.676 21.9473 14.7209 21.936 15.8C21.936 16.98 21.582 17.975 20.875 18.785C20.167 19.595 19.278 20 18.205 20C17.005 20 15.965 19.474 15.087 18.42C14.207 17.368 13.768 16.09 13.768 14.586C13.768 10.074 16.105 6.546 20.778 4L22 6.499ZM10.232 6.499C7.595 7.887 6.277 9.519 6.277 11.393C7.413 11.531 8.345 12.023 9.074 12.868C9.78907 13.6761 10.1786 14.721 10.167 15.8C10.167 16.98 9.808 17.975 9.09 18.785C8.372 19.595 7.477 20 6.405 20C5.205 20 4.17 19.474 3.302 18.42C2.434 17.369 2 16.09 2 14.587C2 10.074 4.326 6.546 8.977 4L10.232 6.499Z" fill="black"/></g><defs><clipPath id="clip0_2703_124953"><rect width="24" height="24" fill="white"/></clipPath></defs></svg>'
 
 /**
  * @class Quote

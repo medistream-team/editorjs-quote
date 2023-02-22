@@ -1,6 +1,6 @@
 {
-  "name": "@editorjs/quote",
-  "version": "2.5.0",
+  "name": "@medistream/editorjs-quote",
+  "version": "2.6.0",
   "keywords": [
     "codex editor",
     "tool",
@@ -10,15 +10,15 @@
   ],
   "description": "Quote Tool for Editor.js",
   "license": "MIT",
-  "repository": "https://github.com/editor-js/quote",
+  "repository": "https://github.com/medistream-team/editorjs-quote",
   "main": "./dist/bundle.js",
   "scripts": {
     "build": "webpack --mode production",
     "build:dev": "webpack --mode development --watch"
   },
   "author": {
-    "name": "CodeX",
-    "email": "team@codex.so"
+    "name": "medistream.team",
+    "email": "medistream.team@gmail.com"
   },
   "devDependencies": {
     "@babel/core": "^7.3.4",
