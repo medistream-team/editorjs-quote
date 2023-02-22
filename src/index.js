@@ -16,13 +16,11 @@ const IconQuote = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" x
  * @typedef {object} QuoteData
  * @description Quote Tool`s input and output data
  * @property {string} text - quote`s text
- * @property {string} caption - quote`s caption
  * @property {'center'|'left'} alignment - quote`s alignment
  *
  * @typedef {object} QuoteConfig
  * @description Quote Tool`s initial configuration
  * @property {string} quotePlaceholder - placeholder to show in quote`s text input
- * @property {string} captionPlaceholder - placeholder to show in quote`s caption input
  * @property {'center'|'left'} defaultAlignment - alignment to use as default
  *
  * @typedef {object} TunesMenuConfig
@@ -87,16 +85,6 @@ export default class Quote {
   }
 
   /**
-   * Default placeholder for quote caption
-   *
-   * @public
-   * @returns {string}
-   */
-  static get DEFAULT_CAPTION_PLACEHOLDER() {
-    return 'Enter a caption';
-  }
-
-  /**
    * Allowed quote alignments
    *
    * @public
@@ -135,7 +123,7 @@ export default class Quote {
        * @returns {string}
        */
       export: function (quoteData) {
-        return quoteData.caption ? `${quoteData.text} — ${quoteData.caption}` : quoteData.text;
+        return quoteData.text;
       },
     };
   }
@@ -151,7 +139,6 @@ export default class Quote {
       wrapper: 'cdx-quote',
       text: 'cdx-quote__text',
       input: this.api.styles.input,
-      caption: 'cdx-quote__caption',
     };
   }
 
@@ -189,11 +176,9 @@ export default class Quote {
     this.readOnly = readOnly;
 
     this.quotePlaceholder = config.quotePlaceholder || Quote.DEFAULT_QUOTE_PLACEHOLDER;
-    this.captionPlaceholder = config.captionPlaceholder || Quote.DEFAULT_CAPTION_PLACEHOLDER;
 
     this.data = {
       text: data.text || '',
-      caption: data.caption || '',
       alignment: Object.values(ALIGNMENTS).includes(data.alignment) && data.alignment ||
       config.defaultAlignment ||
       DEFAULT_ALIGNMENT,
@@ -211,16 +196,10 @@ export default class Quote {
       contentEditable: !this.readOnly,
       innerHTML: this.data.text,
     });
-    const caption = this._make('div', [this.CSS.input, this.CSS.caption], {
-      contentEditable: !this.readOnly,
-      innerHTML: this.data.caption,
-    });
 
     quote.dataset.placeholder = this.quotePlaceholder;
-    caption.dataset.placeholder = this.captionPlaceholder;
 
     container.appendChild(quote);
-    container.appendChild(caption);
 
     return container;
   }
@@ -233,11 +212,9 @@ export default class Quote {
    */
   save(quoteElement) {
     const text = quoteElement.querySelector(`.${this.CSS.text}`);
-    const caption = quoteElement.querySelector(`.${this.CSS.caption}`);
 
     return Object.assign(this.data, {
       text: text.innerHTML,
-      caption: caption.innerHTML,
     });
   }
 
@@ -247,9 +224,7 @@ export default class Quote {
   static get sanitize() {
     return {
       text: {
-        br: true,
-      },
-      caption: {
+        div: true,
         br: true,
       },
       alignment: {},
